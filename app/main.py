@@ -11,14 +11,14 @@ class IntegerRange:
         self.max_amount = max_amount
         self.name = None
 
-    def __set_name__(self, owner, name: str) -> None:
+    def __set_name__(self, owner: type, name: str) -> None:
         self.name = name
         pass
 
     def __get__(
             self,
-            obj,
-            objtype=None
+            obj: object,
+            objtype: type | None = None
     ) -> None:
         if obj is None:
             return self
@@ -26,7 +26,7 @@ class IntegerRange:
 
     def __set__(
             self,
-            obj,
+            obj: object,
             value: int
     ) -> None:
         if type(value) is not int:
