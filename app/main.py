@@ -27,7 +27,7 @@ class IntegerRange:
     def __set__(
             self,
             obj,
-            value
+            value: int
     ) -> None:
         if type(value) is not int:
             raise TypeError
@@ -36,6 +36,7 @@ class IntegerRange:
         obj.__dict__[self.name] = value
 
         pass
+
 
 class Visitor:
     def __init__(
@@ -100,7 +101,7 @@ class Slide:
     def __init__(
             self,
             name: str,
-            limitation_class
+            limitation_class: type
     ) -> None:
         self.name = name
         self.limitation_class = limitation_class
@@ -112,5 +113,5 @@ class Slide:
         try:
             self.limitation_class(visitor.age, visitor.weight, visitor.height)
             return True
-        except(TypeError, ValueError):
+        except (TypeError, ValueError):
             return False
